@@ -77,6 +77,6 @@ public class PAPProtocol extends AbstractAuthProtocol {
 
     @Override
     protected boolean supportOtpWithoutPassword() {
-        return false;
+        return true;
     }
 }

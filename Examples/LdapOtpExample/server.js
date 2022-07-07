@@ -24,7 +24,8 @@ function renderUI(request, response, status) {
 }
 
 const radiusClient = new Client({
-    host: 'localhost',
+    host: 'ssotest01.mgm-tp.com',
+    timeout: 25000,
     dictionaries: [
         dictionaries.rfc2865.file,
         dictionaries.mikrotik.file
