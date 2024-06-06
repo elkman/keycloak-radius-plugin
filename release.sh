@@ -70,14 +70,7 @@ fi
 # get perform release
 cd keycloak-plugins
 mvn -Psign clean release:perform -Darguments=-Dgpg.passphrase=${password} -DskipTests
-## build keycloak-radius
-#cd ../keycloak
-## update version of keycloak-radius-legacy
-#mvn versions:set -DnewVersion=$tagVersion
-## build keycloak-radius-legacy
-#mvn clean install -Dkeycloak-plugin=$tagVersion -Dproduction=true -DskipTests
-## update version of keycloak-radius-legacy
-#mvn versions:set -DnewVersion=$tagDevVersion
+
 cd ../keycloak-quarkus
 # update version of keycloak-radius
 mvn versions:set -DnewVersion=$tagVersion
@@ -90,28 +83,18 @@ git pull
 hub release create -a ./keycloak-quarkus/target/keycloak-radius.zip -m "Keycloak with radius server ${tagName}
 
 
-**releaseNotes**:
-<pre>
+## Release Notes
 $releaseNotes
-</pre>
-- [Docker Installation](https://github.com/vzakharchenko/keycloak-radius-plugin/blob/master/docker/README.md)
 
-requirements: **openjdk 17**
+## Requirement:
+* Java 17
 
-**Keycloak Quarkus installation steps**:
+## Keycloak installation steps
 1. download and unzip keycloak-radius.zip <pre>unzip keycloak-radius.zip -d keycloak-radius</pre>
 2. <pre>cd keycloak-radius</pre>
-3. <pre>sh bin/kc.sh --debug 8190 start-dev --http-port=8090</pre>
-4. open http://localhost:8090
-5. default radius shared Secret: <pre>secret</pre>
-
-**Keycloak WildFly (deprecated) installation steps**:
-1. download and unzip keycloak-radius.zip <pre>unzip keycloak-radius-legacy.zip -d keycloak-radius</pre>
-2. <pre>cd keycloak-radius</pre>
-3. <pre>sh bin/standalone.sh  -c standalone.xml -b 0.0.0.0 -Djboss.bind.address.management=0.0.0.0 --debug 8190 -Djboss.http.port=8090</pre>
-4. open http://localhost:8090
-5. default radius shared Secret: <pre>secret</pre>
-
+3. <pre>sh bin/kc.sh --debug start-dev</pre>
+4. open http://localhost:8080
+5. default radius shared Secret: `secret`
 " $tagName
 
 
