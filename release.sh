@@ -48,7 +48,7 @@ fi
 
 # prepare release
 cd keycloak-plugins
-mvn clean release:prepare -Psign -Darguments=-Dgpg.passphrase=${password} -Dresume=false -DskipTests
+mvn clean release:prepare -Psign -Dresume=false -DskipTests
 cd ..
 # get release tag name
 tagName=`cat $PROPERTY_FILE | grep "scm.tag" | grep -i -v -E "scm.tagNameFormat" | cut -d'=' -f2`
@@ -69,7 +69,7 @@ if [[ "x${tagName}" == "x" ]]; then
 fi
 # get perform release
 cd keycloak-plugins
-mvn -Psign clean release:perform -Darguments=-Dgpg.passphrase=${password} -DskipTests
+mvn -Psign clean release:perform -DskipTests
 
 cd ../keycloak-quarkus
 # update version of keycloak-radius
