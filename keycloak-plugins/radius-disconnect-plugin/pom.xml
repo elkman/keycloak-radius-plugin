@@ -27,7 +27,7 @@
         <dependency>
             <groupId>io.quarkus.resteasy.reactive</groupId>
             <artifactId>resteasy-reactive</artifactId>
-            <version>3.8.5</version>
+            <version>3.11.1</version>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
