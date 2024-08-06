@@ -21,4 +21,6 @@ cp data/cache-ispn.xml "${kc_dir}/conf"
 rm -rf "${kc_dir}/config/radius.config"
 cp data/radius.config "${kc_dir}/config/radius.config"
 
+cp data/providers/*.jar "${kc_dir}/providers/"
+
 ./start.sh
