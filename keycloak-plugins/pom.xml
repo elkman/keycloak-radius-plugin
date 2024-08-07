@@ -58,7 +58,7 @@
         <slf4j.version>2.0.13</slf4j.version>
         <fast-build>false</fast-build>
 
-        <pmdVersion>6.17.0</pmdVersion>
+        <pmdVersion>6.55.0</pmdVersion>
 
         <keycloak.version>25.0.1</keycloak.version>
         <checkStyleLocation>../analizers</checkStyleLocation>
