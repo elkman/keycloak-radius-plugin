@@ -480,7 +480,7 @@
                         <plugin>
                             <groupId>com.mebigfatguy.sb-contrib</groupId>
                             <artifactId>sb-contrib</artifactId>
-                            <version>7.6.4</version>
+                            <version>7.6.9</version>
                         </plugin>
                     </plugins>
                 </configuration>
