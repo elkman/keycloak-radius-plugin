@@ -584,7 +584,7 @@
           <!-- run this by mvn -U rewrite:run -->
           <groupId>org.openrewrite.maven</groupId>
           <artifactId>rewrite-maven-plugin</artifactId>
-          <version>6.29.0</version>
+          <version>6.32.0</version>
           <configuration>
             <exportDatatables>true</exportDatatables>
             <activeRecipes>
