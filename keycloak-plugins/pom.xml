@@ -74,6 +74,7 @@
 
     <!-- dependency versions -->
     <vzakharchenko-tinyradius-netty.version>1.1.4.1</vzakharchenko-tinyradius-netty.version>
+    <javax.jaxb-api.version>2.3.1</javax.jaxb-api.version>
     <keycloak.version>26.7.3</keycloak.version>
 
     <!-- dependency versions provided by the selected ${keycloak.version} -->
@@ -122,10 +123,6 @@
           <exclusion>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-          </exclusion>
-          <exclusion>
-            <groupId>javax.xml.bind</groupId>
-            <artifactId>jaxb-api</artifactId>
           </exclusion>
           <exclusion>
             <groupId>org.apache.logging.log4j</groupId>
@@ -327,7 +324,17 @@
           </exclusion>
         </exclusions>
       </dependency>
-
+      <dependency>
+        <!-- The patched version 'tinyradius-netty:1.1.4.1' uses 'javax.xml.bind.DatatypeConverter' from
+             'javax.xml.bind:jaxb-api', which is no longer included with Keycloak (Keycloak now only includes
+             'jakarta.xml.bind'). In addition, this also includes the deprecated
+             'javax.activation:javax.activation-api.'. Both are shaded into the plugin JAR.
+        -->
+        <groupId>javax.xml.bind</groupId>
+        <artifactId>jaxb-api</artifactId>
+        <version>${javax.jaxb-api.version}</version>
+        <scope>runtime</scope>
+      </dependency>
       <dependency>
         <groupId>${project.groupId}</groupId>
         <artifactId>radius-plugin</artifactId>
