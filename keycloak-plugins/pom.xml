@@ -78,9 +78,16 @@
     <keycloak.version>26.7.3</keycloak.version>
 
     <!-- dependency versions provided by the selected ${keycloak.version} -->
-    <!-- use: find ../keycloak/target/keycloak -name "*.jar" |cut -d/ -f 5- | sort \
-                | grep -E "(angus-mail|commons-(codec|io|lang)|freemarker|\.jboss-(logging|logmanager)-\d(\
-                           )?|jakarta.(persistence|ws.rs|xml.bind)|netty-com|resteasy-reactive-\d|org.slf4j)"
+    <!-- use: find ../keycloak/target/keycloak -name "*.jar" | cut -d/ -f 4- | sort \
+                | grep -E -e 'angus-mail' \
+                          -e "cdi-api" \
+                          -e 'commons-(codec|io|lang)' \
+                          -e 'freemarker' \
+                          -e '\.jboss-(logging|logmanager)-[0-9]' \
+                          -e 'jakarta\.(persistence|ws\.rs|xml\.bind)' \
+                          -e 'netty-com' \
+                          -e 'resteasy-reactive-[0-9]' \
+                          -e 'org\.slf4j'
     -->
     <kc.angus-mail.version>2.0.5</kc.angus-mail.version>
     <kc.commons-codec.version>1.21.0</kc.commons-codec.version>
@@ -89,6 +96,7 @@
     <kc.freemarker.version>2.3.32</kc.freemarker.version>
     <kc.jboss-logging.version>3.6.2.Final</kc.jboss-logging.version>
     <kc.jboss-logmanager.version>3.2.1.Final</kc.jboss-logmanager.version>
+    <kc.jakarta.enterprise-cdi-api.version>4.1.0</kc.jakarta.enterprise-cdi-api.version>
     <kc.jakarta.persistence-api.version>3.2.0</kc.jakarta.persistence-api.version>
     <kc.jakarta.ws.rs-api.version>3.1.0</kc.jakarta.ws.rs-api.version>
     <kc.jakarta.xml.bind-api.version>4.0.5</kc.jakarta.xml.bind-api.version>
@@ -186,6 +194,12 @@
         <groupId>io.quarkus.resteasy.reactive</groupId>
         <artifactId>resteasy-reactive-common</artifactId>
         <version>${kc.resteasy-reactive.version}</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>jakarta.enterprise</groupId>
+        <artifactId>jakarta.enterprise.cdi-api</artifactId>
+        <version>${kc.jakarta.enterprise-cdi-api.version}</version>
         <scope>provided</scope>
       </dependency>
       <dependency>
