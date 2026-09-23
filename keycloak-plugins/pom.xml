@@ -102,7 +102,7 @@
     <kc.jakarta.xml.bind-api.version>4.0.5</kc.jakarta.xml.bind-api.version>
     <kc.netty.version>4.1.136.Final</kc.netty.version>
     <kc.resteasy-reactive.version>3.33.3.2</kc.resteasy-reactive.version>
-    <kc.slf4j.version>2.0.17</kc.slf4j.version>
+    <kc.slf4j.version>2.0.19</kc.slf4j.version>
 
     <!-- test scope only dependency versions -->
     <byte-buddy.version>1.18.14</byte-buddy.version>
