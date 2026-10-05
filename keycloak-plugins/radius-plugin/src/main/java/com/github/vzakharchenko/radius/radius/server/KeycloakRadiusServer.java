@@ -77,8 +77,8 @@ public final class KeycloakRadiusServer
                                             RadiusServerSettings radiusSettings) {
         SecretProvider secretProvider = new KeycloakSecretProvider();
         final PacketEncoder packetEncoder = createPacketEncoder(session);
-        final ServerPacketCodec serverPacketCodec = new ServerPacketCodec(packetEncoder,
-                secretProvider);
+        final ServerPacketCodec serverPacketCodec = new MessageAuthenticatorPacketCodec(
+                packetEncoder, secretProvider, radiusSettings.isRequireMessageAuthenticator());
         return new RadiusServer(bootstrap,
                 new ChannelInitializer<DatagramChannel>() {
                     @Override

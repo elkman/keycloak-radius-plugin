@@ -18,6 +18,7 @@ public class RadiusConfigModel {
     private String externalDictionary;
     private List<RadiusAccessModel> radiusIpAccess;
     private boolean useUdpRadius;
+    private boolean requireMessageAuthenticator;
 
     public String getSharedSecret() {
         return sharedSecret;
@@ -108,5 +109,13 @@ public class RadiusConfigModel {
 
     public void setExternalDictionary(String externalDictionary) {
         this.externalDictionary = externalDictionary;
+    }
+
+    public boolean isRequireMessageAuthenticator() {
+        return requireMessageAuthenticator;
+    }
+
+    public void setRequireMessageAuthenticator(boolean requireMessageAuthenticator) {
+        this.requireMessageAuthenticator = requireMessageAuthenticator;
     }
 }

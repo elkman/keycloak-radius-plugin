@@ -72,6 +72,11 @@
         <Class name="com.github.vzakharchenko.radius.radius.handlers.protocols.CHAPProtocol"/>
     </Match>
     <Match>
+        <!-- Response Authenticator is defined as MD5 by RFC 2865 -->
+        <Bug pattern="WEAK_MESSAGE_DIGEST_MD5"/>
+        <Class name="com.github.vzakharchenko.radius.radius.server.MessageAuthenticator"/>
+    </Match>
+    <Match>
         <Bug pattern="ITC_INHERITANCE_TYPE_CHECKING"/>
         <Class name="com.github.vzakharchenko.radius.password.RadiusCredentialProvider"/>
     </Match>

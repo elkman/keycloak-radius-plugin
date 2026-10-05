@@ -114,6 +114,7 @@ Change the radius-plugin code and start again with: `buildAndStartDb.sh`, …
       "accountPort": 1813,
       "numberThreads": 8,
       "useUdpRadius": true,
+      "requireMessageAuthenticator": true,
       "externalDictionary": "/opt/dictionary",
       "otpWithoutPassword": [ ],
       "radsec": {
@@ -146,6 +147,18 @@ where
    - **otp** - _deprecated_, ignored if **otpWithoutPassword** is defined, otherwise
      ```"otp":true``` is interpreted for backward compatibility as ```"otpWithoutPassword": [ "chap", "mschapv2" ]```
    -  **externalDictionary** - path to the dictionary file in freeradius format
+   -  **requireMessageAuthenticator** - if true, Access-Requests without a valid
+      Message-Authenticator attribute are silently dropped (default: false).
+      Requests with an invalid Message-Authenticator are always dropped, and all
+      Access-Accept/Reject/Challenge responses always carry a Message-Authenticator
+      as first attribute. This mitigates BlastRADIUS
+      ([CVE-2024-3596](https://www.blastradius.fail/)) and is required by clients such as
+      MikroTik RouterOS with `require-message-auth=yes-for-request-resp`.
+
+### Brute Force Detection
+If brute force detection is enabled for the realm, failed RADIUS logins are counted
+like failed browser logins. A user that is temporarily or permanently locked out is
+rejected without checking the password.
 ## Run Keycloak Locally
    ```bash
 cd keycloak-26.7.4
