@@ -60,7 +60,11 @@ public class AuthHandler extends AbstractHandler<IRadiusAuthHandlerProvider>
                                    KeycloakSession session) {
         IRadiusUserInfoGetter radiusUserInfoGetter = KeycloakSessionUtils
                 .getRadiusUserInfo(session);
+        if (RadiusBruteForceProtection.isLockedOut(session, radiusUserInfoGetter)) {
+            return false;
+        }
         boolean b = verifyPassword0(radiusUserInfoGetter, authProtocol);
+        RadiusBruteForceProtection.recordLogin(session, radiusUserInfoGetter, b);
         return b && !radiusUserInfoGetter.getRadiusUserInfo().isForceReject();
     }
 

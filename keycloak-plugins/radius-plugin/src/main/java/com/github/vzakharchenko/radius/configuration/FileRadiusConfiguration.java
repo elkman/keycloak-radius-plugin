@@ -96,6 +96,8 @@ public class FileRadiusConfiguration implements IRadiusConfiguration {
         radiusServerSettings.setRadSecSettings(transform(configModel.getRadsec()));
         radiusServerSettings.setCoASettings(transform(configModel.getCoa()));
         radiusServerSettings.setUseUdpRadius(configModel.isUseUdpRadius());
+        radiusServerSettings.setRequireMessageAuthenticator(
+                configModel.isRequireMessageAuthenticator());
         radiusServerSettings.setExternalDictionary(configModel.getExternalDictionary());
 
         transformOtpWithoutPassword(configModel, radiusServerSettings);

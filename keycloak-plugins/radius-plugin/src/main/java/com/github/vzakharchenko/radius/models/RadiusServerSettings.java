@@ -17,6 +17,7 @@ public class RadiusServerSettings {
     private RadSecSettings radSecSettings;
     private CoASettings coASettings;
     private Map<String, String> accessMap;
+    private boolean requireMessageAuthenticator;
 
     public String getSecret() {
         return secret;
@@ -48,6 +49,14 @@ public class RadiusServerSettings {
 
     public void setAccessMap(Map<String, String> accessMap) {
         this.accessMap = accessMap;
+    }
+
+    public boolean isRequireMessageAuthenticator() {
+        return requireMessageAuthenticator;
+    }
+
+    public void setRequireMessageAuthenticator(boolean requireMessageAuthenticator) {
+        this.requireMessageAuthenticator = requireMessageAuthenticator;
     }
 
     public boolean isUseUdpRadius() {
